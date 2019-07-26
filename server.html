@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>server.md—C:\Users\Ryan\Documents</title>
+  <style type="text/css">
+    
+
+pre,
+code {
+  font-family: Menlo, Monaco, "Courier New", monospace;
+}
+
+pre {
+  padding: .5rem;
+  line-height: 1.25;
+  overflow-x: scroll;
+}
+
+@media print {
+  *,
+  *:before,
+  *:after {
+    background: transparent !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  a[href^="#"]:after,
+  a[href^="javascript:"]:after {
+    content: "";
+  }
+
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+
+  thead {
+    display: table-header-group;
+  }
+
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+
+  img {
+    max-width: 100% !important;
+  }
+
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}
+
+a,
+a:visited {
+  color: #01ff70;
+}
+
+a:hover,
+a:focus,
+a:active {
+  color: #2ecc40;
+}
+
+.retro-no-decoration {
+  text-decoration: none;
+}
+
+html {
+  font-size: 12px;
+}
+
+@media screen and (min-width: 32rem) and (max-width: 48rem) {
+  html {
+    font-size: 15px;
+  }
+}
+
+@media screen and (min-width: 48rem) {
+  html {
+    font-size: 16px;
+  }
+}
+
+body {
+  line-height: 1.85;
+}
+
+p,
+.retro-p {
+  font-size: 1rem;
+  margin-bottom: 1.3rem;
+  margin-left: 2.2rem;
+}
+
+h1,
+.retro-h1,
+h2,
+.retro-h2,
+h3,
+.retro-h3,
+h4,
+.retro-h4 {
+  margin: 1.414rem 0 .5rem;
+  font-weight: inherit;
+  line-height: 1.42;
+}
+
+h1,
+.retro-h1 {
+  margin-top: 0;
+  font-size: 3.998rem;
+}
+
+h2,
+.retro-h2 {
+  font-size: 2.827rem;
+}
+
+h3,
+.retro-h3 {
+  font-size: 1.999rem;
+}
+
+h4,
+.retro-h4 {
+  font-size: 1.414rem;
+}
+
+h5,
+.retro-h5 {
+  font-size: 1.121rem;
+}
+
+h6,
+.retro-h6 {
+  font-size: .88rem;
+}
+
+small,
+.retro-small {
+  font-size: .707em;
+}
+
+/* https://github.com/mrmrs/fluidity */
+
+img,
+canvas,
+iframe,
+video,
+svg,
+select,
+textarea {
+  max-width: 100%;
+}
+
+html,
+body {
+  background-color: #222;
+  min-height: 100%;
+}
+
+html {
+  font-size: 18px;
+}
+
+body {
+  color: #fafafa;
+  /* font-family: "Courier New"; */
+  line-height: 1.45;
+  margin: 6rem auto 1rem;
+  max-width: 74rem;
+  padding: .25rem;
+}
+
+pre {
+  background-color: #333;
+  overflow-x: auto;
+  margin: 40px;
+}
+
+blockquote {
+  border-left: 3px solid #01ff70;
+  padding-left: 1rem;
+}
+
+h1,h2,h3,h4,h5,h6{
+  margin-top: 120px;
+  margin-bottom: 60px;
+  position: relative;
+  padding: 0px;
+  padding-left: 30px;
+  line-height: normal;
+  background-color: #111;
+  box-shadow: 1px 1px 10px rgba(0,0,0,.3);
+}
+h1:before,
+h2:before,
+h3:before,
+h4:before,
+h5:before,
+h6:before
+{
+
+    content: '';
+    width: 5px;
+    height: 100%;
+    background-color: gray;
+    display: block;
+    position: absolute;
+    left: -5px;
+    top: 0px;
+}
+
+h1:after,
+h2:after,
+h3:after,
+h4:after,
+h5:after,
+h6:after
+{
+    content: '';
+    position: absolute;
+    top: -36px;
+    left: 3px;
+    font-size: 2.8rem;
+    color: #555;
+}
+h6:before{
+  background-color: #fed652;
+}
+h5:before{
+  background-color: #ffca25;
+}
+h4:before{
+  background-color: #fec107;
+}
+h3:before{
+  background-color: #ffb200;
+}
+h2:before{
+  background-color: #ffa000;
+}
+h1:before{
+  background-color: #ff8f00;
+}
+h1:after{
+  content: '·';
+}
+h2:after{
+  content: '··';
+}
+h3:after{
+  content: '···';
+}
+h4:after{
+}
+h5:after{
+}
+h6:after{
+}
+
+
+  </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="markup">
+        <article id="content" class="markdown-body">
+          <h1>安装服务器CentOS 7.5-1804</h1>
+<h2>基础安装</h2>
+<div class="codehilite"><pre>yum update -y
+yum groupinstall Base -y
+</pre></div>
+
+
+<h2>Install VESTA</h2>
+<h3>Download installation script</h3>
+<div class="codehilite"><pre>curl -O http://vestacp.com/pub/vst-install.sh
+</pre></div>
+
+
+<h3>Run it</h3>
+<div class="codehilite"><pre>bash vst-install.sh --nginx no --apache yes --phpfpm no --named yes --remi yes --vsftpd no --proftpd no --iptables yes --fail2ban yes --quota no --exim yes --dovecot yes --spamassassin yes --clamav yes --softaculous yes --mysql yes --postgresql no --hostname dooioomooServer --email postmaster@fduit.com --password gyj0076
+</pre></div>
+
+
+<h3>ERROR</h3>
+<div class="codehilite"><pre>Installing or updating java-1.7.0-openjdk to java-1.7.0-openjdk-1.7.0.191-2.6.15.4.el6_10 fails in error
+</pre></div>
+
+
+<div class="codehilite"><pre>    mkdir -p /var/lib/rpm-state
+</pre></div>
+
+
+<div class="codehilite"><pre>Starting vesta-nginx: nginx: [emerg] getpwnam(&quot;admin&quot;) failed in /usr/local/vesta/nginx/conf/nginx.conf:1
+</pre></div>
+
+
+<div class="codehilite"><pre>adduser admin
+</pre></div>
+
+
+<h2>Change VESTA Port</h2>
+<ul>
+<li>
+<p>修改防火墙端口</p>
+</li>
+<li>
+<p>change file /usr/local/vesta/nginx/conf/nginx.conf</p>
+</li>
+</ul>
+<div class="codehilite"><pre>    # Vhost
+    server {
+        listen          8083;// to 8028
+</pre></div>
+
+
+<ul>
+<li>restart service</li>
+</ul>
+<div class="codehilite"><pre>service vesta restart
+</pre></div>
+
+
+<h2>修改VESTA SSL 证书</h2>
+<div class="codehilite"><pre>    cd /usr/local/vesta/ssl
+    mv certificate.crt certificate.crt_old
+    mv certificate.key certificate.key_old
+    ln -s /home/admin/conf/web/ssl.fduit.com.key /usr/local/vesta/ssl/certificate.key
+    ln -s /home/admin/conf/web/ssl.fduit.com.crt /usr/local/vesta/ssl/certificate.crt
+    sudo service vesta restart
+</pre></div>
+
+
+<h2>修改webmail 地址</h2>
+<p>服务器 -&gt; dooioomooServer 配置 -&gt; 邮箱服务 -&gt; 网页邮箱地址</p>
+<div class="codehilite"><pre>    https://mail.fduit.com/webmail
+</pre></div>
+
+
+<p>服务器 -&gt; dooioomooServer 配置 -&gt; 邮箱服务 -&gt; 网页邮箱地址</p>
+<div class="codehilite"><pre>    https://vps.fduit.com/pma
+
+    ### 服务器登录密码
+</pre></div>
+
+
+<h2>修复邮箱登录错误</h2>
+<p>Initialization failed: namespace configuration error: inbox=yes namespace missing</p>
+<p>Open up /etc/dovecot/conf.d/15-mailboxes.conf and add in:</p>
+<div class="codehilite"><pre>inbox = yes
+</pre></div>
+
+
+<h2>无法收到email 需要设定 MX记录</h2>
+<h2>error:0200100D:system library:fopen:Permission denied</h2>
+<div class="codehilite"><pre>    cd /home/admin/conf/web
+    chmod 644 ssl.fduit.com.key
+    chmod 644 ssl.fduit.com.crt
+</pre></div>
+
+
+<h2>补装PROFTPD</h2>
+<h3>修改配置</h3>
+<div class="codehilite"><pre>    vim /etc/proftpd.conf
+</pre></div>
+
+
+<div class="codehilite"><pre>ServerName                      &quot;FTP&quot;
+ServerIdent                     on &quot;FTP Server ready.&quot;
+ServerAdmin                     root@localhost
+DefaultServer                   on
+DefaultRoot                  ~ !adm
+
+&lt;IfModule mod_vroot.c&gt;
+    VRootEngine                 on
+    VRootAlias                  /etccurity/pam_env.conf etccurity/pam_env.conf
+&lt;/IfModule&gt;
+
+AuthPAMConfig                   proftpd
+AuthOrder                       mod_auth_pam.c* mod_auth_unix.c
+UseReverseDNS                   off
+User                            nobody
+Group                           nobody
+MaxInstances                    20
+UseSendfile                     off
+LogFormat                       default &quot;%h %l %u %t \&quot;%r\&quot; %s %b&quot;
+LogFormat                       auth    &quot;%v [%P] %h %t \&quot;%r\&quot; %s&quot;
+ListOptions                     -a
+RequireValidShell               off
+PassivePorts                    12000 12100
+
+&lt;Global&gt;
+  Umask                         002
+  IdentLookups                  off
+  AllowOverwrite                yes
+  &lt;Limit ALL SITE_CHMOD&gt;
+    AllowAll
+  &lt;/Limit&gt;
+&lt;/Global&gt;
+</pre></div>
+
+
+<p>加入配置菜单</p>
+<div class="codehilite"><pre>vim /usr/local/vesta/conf/vesta.conf
+</pre></div>
+
+
+<p>加入行</p>
+<div class="codehilite"><pre>FTP_SYSTEM=&#39;proftpd&#39;
+</pre></div>
+
+
+<h2>Install Webmin</h2>
+<ul>
+<li>If you like to install and update Webmin via RPM, create the /etc/yum.repos.d/webmin.repo file containing :</li>
+</ul>
+<div class="codehilite"><pre>[Webmin]
+name=Webmin Distribution Neutral
+#baseurl=https://download.webmin.com/download/yum
+mirrorlist=https://download.webmin.com/download/yum/mirrorlist
+enabled=1
+</pre></div>
+
+
+<ul>
+<li>You should also fetch and install my GPG key with which the packages are signed, with the commands :</li>
+</ul>
+<div class="codehilite"><pre>wget http://www.webmin.com/jcameron-key.asc
+rpm --import jcameron-key.asc
+</pre></div>
+
+
+<ul>
+<li>You will now be able to install with the command :</li>
+</ul>
+<div class="codehilite"><pre>yum install webmin
+</pre></div>
+
+
+<ul>
+<li>All dependencies should be resolved automatically.</li>
+</ul>
+<h3>change webmin port to 10208</h3>
+<h3>change webmin ssl</h3>
+<p>settings -&gt; Webmin -&gt; Webmin Configuration -&gt; SSL Encryption</p>
+<p>Private key file: </p>
+<div class="codehilite"><pre>/home/admin/conf/web/ssl.fduit.com.key
+</pre></div>
+
+
+<p>Certificate file:</p>
+<div class="codehilite"><pre>/home/admin/conf/web/ssl.fduit.com.crt
+</pre></div>
+
+
+<div class="codehilite"><pre>    SAVE BUTTON
+</pre></div>
+
+
+<h1>CENTOS 7 分区备份</h1>
+<div class="codehilite"><pre> sfdisk -d /dev/sdb &gt; sdb.partition.table.2018
+ sfdisk -d /dev/sda &gt; sda.partition.table.2018
+</pre></div>
+
+
+<div class="codehilite"><pre>sfdisk -f /dev/sdb &lt; sdb.partition.table.2018
+sfdisk -f /dev/sda &lt; sda.partition.table.2018
+</pre></div>
+
+
+<h1>硬盘分区设定</h1>
+<div class="codehilite"><pre>假设硬盘分区是这样的
+sdb1 是 /boot
+sda6 是 /
+sda7 是 /home
+sda5 是 swap交换分区
+
+那么执行下面命令
+mount /dev/sda6 /mnt
+mount /dev/sda7 /mnt/home
+mount /dev/sda1 /mnt/boot
+</pre></div>
+
+
+<h1>CENTOS 7 系统备份</h1>
+<div class="codehilite"><pre>sudo tar cvpzf centos7.tgz --warning=no-file-changed --exclude=/centos7.tgz --exclude=/proc --exclude=/lost+found --exclude=/mnt --exclude=/sys --exclude=/media /
+</pre></div>
+
+
+<div class="codehilite"><pre>sudo tar xvpfz centos7.tgz -C /  
+</pre></div>
+
+
+<div class="codehilite"><pre>mkdir proc
+mkdir lost+found
+mkdir mnt
+mkdir sys
+</pre></div>
+
+
+<h1>升级centos7 php 5.6 to php 7.2</h1>
+<div class="codehilite"><pre>wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+wget http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+rpm -Uvh remi-release-7.rpm epel-release-latest-7.noarch.rpm
+</pre></div>
+
+
+<div class="codehilite"><pre>yum install yum-utils
+yum-config-manager --disable remi-php56
+yum-config-manager --disable remi-php70
+yum-config-manager --disable remi-php71
+yum-config-manager --enable remi-php72
+</pre></div>
+
+
+<div class="codehilite"><pre>yum update -y
+</pre></div>
+
+
+<div class="codehilite"><pre>php -v
+</pre></div>
+
+
+<div class="codehilite"><pre># php -v
+PHP 7.2.7 (cli) (built: Jun 20 2018 08:21:26) ( NTS )
+Copyright (c) 1997-2018 The PHP Group
+Zend Engine v3.2.0, Copyright (c) 1998-2018 Zend Technologies
+    with Zend OPcache v7.2.7, Copyright (c) 1999-2018, by Zend Technologies
+</pre></div>
+
+
+<h1>mariadb update to 10.3</h1>
+<div class="codehilite"><pre>systemctl stop mariadb / systemctl stop mysql
+yum remove mariadb-server mariadb mariadb-libs -y
+</pre></div>
+
+
+<div class="codehilite"><pre>vim /etc/yum.repos.d/mariadb.repo
+</pre></div>
+
+
+<div class="codehilite"><pre># MariaDB 10.3 CentOS repository list - created 2018-02-15 08:21 UTC
+# http://downloads.mariadb.org/mariadb/repositories/
+[mariadb]
+name = MariaDB
+baseurl = http://yum.mariadb.org/10.3/centos7-amd64
+gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
+gpgcheck=1
+</pre></div>
+
+
+<div class="codehilite"><pre>yum clean all
+yum install MariaDB-server MariaDB-client -y
+</pre></div>
+
+
+<div class="codehilite"><pre>systemctl enable mariadb
+systemctl start mariadb
+</pre></div>
+
+
+<div class="codehilite"><pre>mysql_upgrade
+</pre></div>
+
+
+<h1>SAMBA 防火墙设定</h1>
+<div class="codehilite"><pre>UDP 137,138
+TCP 139,445
+</pre></div>
+        </article>
+      </div>
+    </div>
+  </body>
+</html>
