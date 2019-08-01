@@ -7,7 +7,7 @@ npm i npm@latest -g
 # 安装 GULP
 
 ```
-npm install -g gulp gulp-sass gulp-minify-css gulp-concat gulp-uglify gulp-rename del jshint gulp-jshint gulp-sourcemaps font-awesome bootstrap-sass simple-line-icons jquery magnific-popup --save-dev
+npm i -global gulp gulp-sass gulp-concat autoprefixer gulp-minify browser-sync child_process cssnano del gulp-rename gulp-eslint imagemin gulp-newer gulp-postcss webpack webpack-stream --save-dev
 ```
 
 # 设定路径
